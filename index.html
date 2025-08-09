@@ -2,86 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ebube Nwasike | Developer</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Sacramento&display=swap" rel="stylesheet" />
+  
+  <!-- FontAwesome for icons -->
   <script src="https://kit.fontawesome.com/a2d9d5e1d1.js" crossorigin="anonymous"></script>
+  
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <canvas id="background"></canvas>
+  <canvas id="petal-canvas"></canvas>
 
-  <div class="content">
-    <h1>Ebube Nwasike</h1>
-    <p>Aspiring Creative Software Developer</p>
-    <a href="mailto:bubenwasike@gmail.com" class="button">Contact Me<3</a>
+  <main class="container">
+    <h1>Hi, I’m <span class="name">Ebube</span></h1>
+    <p>Creative developer crafting elegant digital experiences.</p>
+    <a href="mailto:bubenwasike@gmail.com" class="btn-contact">Get in Touch</a>
 
     <div class="socials">
-      <a href="linkedin.com/in/ebube-nwasike-b88726283" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-      <a href="https://www.instagram.com/ebube_nm?igsh=MWxkbW4ycXF3ZGVjdA%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="linkedin.com/in/ebube-nwasike-b88726283" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.instagram.com/ebube_nm?igsh=MWxkbW4ycXF3ZGVjdA%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
     </div>
-  </div>
+  </main>
 
-  <script>
-    const canvas = document.getElementById('background');
-    const ctx = canvas.getContext('2d');
-    let particlesArray;
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      init();
-    });
-
-    const colors = ['#ffb6c1', '#ffc3a0', '#dcb0ff', '#ffffff'];
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 1;
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
-        this.color = colors[Math.floor(Math.random() * colors.length)];
-      }
-
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-      }
-
-      draw() {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    function init() {
-      particlesArray = [];
-      for (let i = 0; i < 100; i++) {
-        particlesArray.push(new Particle());
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particlesArray.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animate);
-    }
-
-    init();
-    animate();
-  </script>
+  <script src="petals.js"></script>
 </body>
 </html>
