@@ -1,14 +1,84 @@
-body {
-    font-family: sans-serif;
-    text-align: center;
-    padding: 40px;
-    background-color: #f0f0f0;
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
   
-  header {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  body, html {
+    height: 100%;
+    font-family: 'Space Grotesk', sans-serif;
+    background: linear-gradient(120deg, #1a1a2e, #16213e);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  /* Background Animation */
+  body::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b, #1fa2ff, #12d8fa, #a6ffcb);
+    background-size: 400% 400%;
+    animation: animateBg 20s ease infinite;
+    z-index: -1;
+    filter: blur(80px);
+  }
+  
+  @keyframes animateBg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Container & Card */
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  .card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.03);
+  }
+  
+  .name {
+    color: #ffcc70;
+    font-weight: 600;
+  }
+  
+  /* Button */
+  .button {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 50px;
+    background: #ff416c;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .button:hover {
+    background: #ff4b2b;
+    transform: scale(1.05);
   }
   
